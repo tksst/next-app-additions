@@ -11,9 +11,39 @@ on:
       - change-this-to-default-branch-when-the-release-workflow-enabled
 
 jobs:
-  build-test:
-    name: Build, Lint and Test
-    uses: tksst/github-actions-workflows/.github/workflows/nodejs-pnpm.yml@71e075efd4b006e33214503832e072ba22fc848b
-    permissions:
-      actions: write
-      contents: read
+  check-skippable:
+    continue-on-error: true
+    runs-on: ubuntu-22.04
+    outputs:
+      skippable: ${{ steps.check.outputs.should_skip }}
+    steps:
+      - id: check
+        uses: fkirc/skip-duplicate-actions@12aca0a884f6137d619d6a8a09fcc3406ced5281 # v5.3.0
+
+  test:
+    name: Test
+    needs: check-skippable
+    if: needs.check-skippable.outputs.skippable != 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-22.04
+          - windows-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: tksst/github-actions-workflows/actions/setup-pnpm-project@71e075efd4b006e33214503832e072ba22fc848b
+      - run: pnpm test
+
+  build-lint:
+    name: Build and Lint
+    needs: check-skippable
+    if: needs.check-skippable.outputs.skippable != 'true'
+
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: tksst/github-actions-workflows/actions/setup-pnpm-project@71e075efd4b006e33214503832e072ba22fc848b
+      - run: pnpm build
+      - run: pnpm lint

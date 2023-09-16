@@ -4,4 +4,5 @@ import { defineConfig } from "tsup";
 export default defineConfig({
     ...binOptions,
     entry: ["src/bin/index.ts"],
+    target: "node20",
 });

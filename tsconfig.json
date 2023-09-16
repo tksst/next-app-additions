@@ -1,4 +1,8 @@
 {
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023"]
+  },
   "extends": "@tksst/project-configs/tsconfig.json",
   "include": ["src"]
 }
