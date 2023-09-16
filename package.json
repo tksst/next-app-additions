@@ -1,10 +1,12 @@
 {
-  "name": "your-package-name-here",
+  "name": "@tksst/next-app-additions",
   "version": "0.0.0-development",
-  "private": true,
-  "description": "description",
-  "homepage": "https://example.example/your-website",
-  "repository": "github:tksst/repository-name",
+  "description": "additions to a project generated with create-next-app",
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://github.com/tksst/next-app-additions",
+  "repository": "github:tksst/next-app-additions",
   "license": "Apache-2.0",
   "author": {
     "name": "Takashi Sato",
