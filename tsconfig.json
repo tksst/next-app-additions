@@ -1,0 +1,4 @@
+{
+  "extends": "@tksst/project-configs/tsconfig.json",
+  "include": ["src"]
+}

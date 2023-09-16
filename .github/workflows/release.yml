@@ -1,0 +1,39 @@
+name: Build, Lint, Test and Release
+on:
+  push:
+    branches:
+      # Currently disaled this workflow.
+      # To enable this feature, change the line below
+      - change-this-to-default-branch-to-enable-this-workflow
+
+jobs:
+  build-lint-test:
+    uses: ./.github/workflows/build-lint-test.yml
+    permissions:
+      actions: write
+      contents: read
+
+  release:
+    needs: build-lint-test
+
+    permissions:
+      # create a PR
+      contents: write
+      pull-requests: write
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: tksst/github-actions-workflows/actions/setup-pnpm-project@71e075efd4b006e33214503832e072ba22fc848b
+        with:
+          node-version: 18
+
+      - run: pnpm build
+
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@f13b1baaa620fde937751f5d2c3572b9da32af23 # v1.4.5
+        with:
+          publish: pnpm exec changeset publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
