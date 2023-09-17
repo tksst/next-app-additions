@@ -2,9 +2,7 @@ name: Build, Lint, Test and Release
 on:
   push:
     branches:
-      # Currently disaled this workflow.
-      # To enable this feature, change the line below
-      - change-this-to-default-branch-to-enable-this-workflow
+      - main
 
 jobs:
   build-lint-test:
