@@ -1,0 +1,3 @@
+save-exact = true
+# better-typescript-lib installs the actual typing using dependencies and remaps it to @typescript/*.
+public-hoist-pattern[]=@typescript/*

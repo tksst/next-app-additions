@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "lib": ["ES2023"]
+    "lib": [
+      "ES2023",
+      // for fetch
+      "DOM"
+    ]
   },
   "extends": "@tksst/project-configs/tsconfig.json",
   "include": ["src"]

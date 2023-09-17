@@ -15,7 +15,7 @@
   },
   "type": "module",
   "bin": {
-    "typescript-node-starter": "./dist/bin/index.js"
+    "next-app-additions": "./dist/bin/index.js"
   },
   "scripts": {
     "clean": "tss-rmrf ./dist/",

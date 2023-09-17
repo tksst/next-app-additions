@@ -1,0 +1,35 @@
+name: Build and Lint
+
+on:
+  workflow_call:
+  workflow_dispatch:
+  pull_request:
+  push:
+
+jobs:
+  check-skippable:
+    continue-on-error: true
+    runs-on: ubuntu-22.04
+    # Minimum permissions required by skip-duplicate-actions
+    permissions:
+      actions: write
+      contents: read
+    outputs:
+      skippable: ${{ steps.check.outputs.should_skip }}
+    steps:
+      - id: check
+        uses: fkirc/skip-duplicate-actions@12aca0a884f6137d619d6a8a09fcc3406ced5281 # v5.3.0
+
+  build-lint:
+    name: Build and Lint
+    needs: check-skippable
+    if: needs.check-skippable.outputs.skippable != 'true'
+
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: tksst/github-actions-workflows/actions/setup-pnpm-project@71e075efd4b006e33214503832e072ba22fc848b
+
+      - run: pnpm build
+
+      - run: pnpm lint
