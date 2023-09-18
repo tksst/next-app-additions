@@ -1,6 +1,6 @@
 {
   "name": "@tksst/next-app-additions",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "additions to a project generated with create-next-app",
   "publishConfig": {
     "access": "public"
