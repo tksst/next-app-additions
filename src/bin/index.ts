@@ -121,7 +121,7 @@ const main = async (): Promise<void> => {
         x["lint:prettier"] = "prettier --cache --check .";
         x["lint:secretlint"] = "secretlint --maskSecrets **";
         x.lint = "run-p --continue-on-error --print-label lint:*";
-        x["fix:eslint"] = "eslint --color --fix .";
+        x["fix:eslint"] = "next lint --fix";
         x["fix:prettier"] = "prettier --cache --write .";
         x.fix = "run-s --continue-on-error fix:*";
     });
