@@ -1,5 +1,12 @@
 # @tksst/next-app-additions
 
+## 1.2.0
+
+### Minor Changes
+
+-   00c7e38: Set ECMAScript version in tsconfig.json to ESNEXT. (Browser compatibility is handled by webpack)
+-   d3969f5: pin the dependencies installed by create-next-app
+
 ## 1.1.1
 
 ### Patch Changes
