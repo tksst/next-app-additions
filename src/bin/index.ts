@@ -9,6 +9,7 @@ import path from "node:path";
 import getLatestNodeVersion from "../lib/getLatestNodeVersion.js";
 import getPackageVersion from "../lib/getPackageVersion.js";
 import getProjectRoot from "../lib/getProjectRoot.js";
+import { loadLock } from "../lib/loadLock.js";
 import simplyExec from "../lib/simplyExec.js";
 
 const PNPM_MAJOR = 8;
@@ -83,11 +84,26 @@ const main = async (): Promise<void> => {
     // add .nvmrc for latest Node.js ${NODEJS_MAJOR}
     await fs.writeFile(".nvmrc", `${await getLatestNodeVersion(NODEJS_MAJOR)}\n`, { encoding: "utf-8" });
 
+    const lock = await loadLock();
+
+    if (lock.dependencies.withVersion.length > 0 || lock.devDependencies.withVersion.length > 0) {
+        await simplyExec("pnpm", [
+            "remove",
+            ...lock.dependencies.withoutVersion,
+            ...lock.devDependencies.withoutVersion,
+        ]);
+    }
+
+    if (lock.dependencies.withVersion.length > 0) {
+        await simplyExec("pnpm", ["add", ...lock.dependencies.withVersion]);
+    }
+
     // install additional packages
     console.log("Installing additional packages:");
     await simplyExec("pnpm", [
         "add",
         "-D",
+        ...lock.devDependencies.withVersion,
         "prettier",
         "@tksst/prettier-config",
         "eslint-config-prettier",
