@@ -164,7 +164,7 @@ const main = async (): Promise<void> => {
         } else if (typeof oldExtends === "string") {
             eslintrcJson.extends = [oldExtends, "prettier"];
         } else {
-            throw new Error(".eslintrc.json is in an unexpected format.");
+            throw new TypeError(".eslintrc.json is in an unexpected format.");
         }
 
         eslintrcJson.plugins = ["simple-import-sort"];

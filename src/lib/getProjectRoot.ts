@@ -8,7 +8,7 @@ async function fileExists(filePath: string): Promise<boolean> {
     try {
         const x = await fs.stat(filePath);
         return x.isFile();
-    } catch (error) {
+    } catch {
         return false;
     }
 }
