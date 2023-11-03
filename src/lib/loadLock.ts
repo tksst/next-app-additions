@@ -9,7 +9,10 @@ function foo(obj: unknown): string[] {
 
     return Object.entries(obj as Record<string, { version: string }>)
         .map(([k, v]) => [k, v.version])
-        .map(([k, v]) => [k, v?.replace(/^(.+?)\(.+$/, "$1")])
+        .map(([k, v]) => {
+            const str = /^[^(]+/.exec(v ?? "");
+            return [k, str?.[0]];
+        })
         .map(([k, v]) => `${k}@${v}`);
 }
 
