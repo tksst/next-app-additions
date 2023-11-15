@@ -36,7 +36,7 @@ async function copyFiles(): Promise<void> {
         if (dirent.isFile()) {
             const dstName = dirent.name.replace(/^dot-/, ".");
 
-            promises.push(fs.cp(path.join(root, "src", "files", dirent.name), dstName, { errorOnExist: true }));
+            promises.push(fs.cp(path.join(root, "src", "files", dirent.name), dstName, { errorOnExist: false }));
         }
         if (dirent.isDirectory()) {
             promises.push(
