@@ -106,6 +106,8 @@ const main = async (): Promise<void> => {
         ...lock.devDependencies.withVersion,
         "prettier",
         "@tksst/prettier-config",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
         "eslint-config-prettier",
         "eslint-plugin-simple-import-sort",
         "secretlint",
@@ -154,24 +156,6 @@ const main = async (): Promise<void> => {
         x.noImplicitReturns = true;
         x.noUncheckedIndexedAccess = true;
         x.exactOptionalPropertyTypes = true;
-    });
-
-    // modify .eslintrc.json
-    await modifyJson(".eslintrc.json", (eslintrcJson: JSONObject) => {
-        const oldExtends = eslintrcJson.extends;
-        if (Array.isArray(oldExtends)) {
-            oldExtends.push("prettier");
-        } else if (typeof oldExtends === "string") {
-            eslintrcJson.extends = [oldExtends, "prettier"];
-        } else {
-            throw new TypeError(".eslintrc.json is in an unexpected format.");
-        }
-
-        eslintrcJson.plugins = ["simple-import-sort"];
-        eslintrcJson.rules = {
-            "simple-import-sort/imports": "error",
-            "simple-import-sort/exports": "error",
-        };
     });
 
     console.log("@tksst/next-app-additions done.");
