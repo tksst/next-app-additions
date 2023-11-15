@@ -1,5 +1,15 @@
 # @tksst/next-app-additions
 
+## 1.3.0
+
+### Minor Changes
+
+-   0cfce47: introduce @typescript-eslint to ESLint configuration
+
+### Patch Changes
+
+-   e8febbb: update the action used in the workflows of GitHub Actions to be added to the Next.js project
+
 ## 1.2.0
 
 ### Minor Changes
