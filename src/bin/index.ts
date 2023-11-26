@@ -78,6 +78,8 @@ function checkGitStatus() {
 const main = async (): Promise<void> => {
     checkGitStatus();
 
+    await fs.rm("node_modules", { force: true, recursive: true });
+
     // Copy some configuration files
     await copyFiles();
 
@@ -116,13 +118,6 @@ const main = async (): Promise<void> => {
         "npm-run-all",
     ]);
     console.log("Installed.");
-    console.log();
-
-    // recreate node_modules because for some reason public-hoist-pattern does not work.
-    console.log("Recreating node_modules:");
-    await fs.rm("node_modules", { force: true, recursive: true });
-    await simplyExec("pnpm", ["install"]);
-    console.log("Done.");
     console.log();
 
     // modify package.json
