@@ -111,6 +111,7 @@ const main = async (): Promise<void> => {
         "@typescript-eslint/eslint-plugin",
         "@typescript-eslint/parser",
         "eslint-config-prettier",
+        "eslint-plugin-redos",
         "eslint-plugin-simple-import-sort",
         "secretlint",
         "@secretlint/secretlint-rule-preset-recommend",
