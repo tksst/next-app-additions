@@ -116,7 +116,7 @@ const main = async (): Promise<void> => {
         "secretlint",
         "@secretlint/secretlint-rule-preset-recommend",
         "better-typescript-lib",
-        "npm-run-all",
+        "npm-run-all2",
     ]);
     console.log("Installed.");
     console.log();
