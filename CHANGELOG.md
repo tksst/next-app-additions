@@ -1,5 +1,11 @@
 # @tksst/next-app-additions
 
+## 1.4.2
+
+### Patch Changes
+
+-   c447197: fix the secretlint options to respect .gitignore and not to expand globs on your shell
+
 ## 1.4.1
 
 ### Patch Changes
