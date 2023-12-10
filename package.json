@@ -30,7 +30,7 @@
     "lint": "run-p --continue-on-error --print-label lint:*",
     "lint:prettier": "prettier --cache --check .",
     "lint:eslint": "eslint --color .",
-    "lint:secretlint": "secretlint --maskSecrets **",
+    "lint:secretlint": "secretlint --maskSecrets --secretlintignore .gitignore '**/*'",
     "lint:tsc": "tsc --noEmit",
     "test": "run-s test:*",
     "test:unit": "jest --ci"
