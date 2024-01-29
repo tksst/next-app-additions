@@ -147,7 +147,6 @@ const main = async (): Promise<void> => {
             throw new Error("tsconfig.json is in an unexpected format.");
         }
 
-        x.target = "esnext";
         x.noImplicitOverride = true;
         x.noImplicitReturns = true;
         x.noUncheckedIndexedAccess = true;
