@@ -1,13 +1,28 @@
+import { readFile } from "node:fs/promises";
+
 import getLatestNodeVersion from "./getLatestNodeVersion.js";
 
-test("latest v20", async () => {
-    const version = await getLatestNodeVersion(20);
+test("latest v16", async () => {
+    jest.spyOn(globalThis, "fetch").mockImplementationOnce(
+        () =>
+            /* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any */
+            Promise.resolve({
+                ok: true,
+                text() {
+                    return readFile(new URL("./test/latest-v16.x", import.meta.url), "utf8");
+                },
+            } as any),
+        /* eslint-enable */
+    );
 
-    const pattern = /^20\.\d+\.\d+$/;
-
-    expect(pattern.test(version)).toBe(true);
+    expect(await getLatestNodeVersion(16)).toBe("16.20.2");
 });
 
-test("latest v16", async () => {
-    expect(await getLatestNodeVersion(16)).toBe("16.20.2");
+test("error", async () => {
+    jest.spyOn(globalThis, "fetch").mockImplementationOnce(() =>
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any
+        Promise.resolve({ ok: false, status: 404 } as any),
+    );
+
+    await expect(getLatestNodeVersion(16)).rejects.toThrow();
 });
