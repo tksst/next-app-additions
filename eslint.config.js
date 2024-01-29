@@ -1,3 +1,3 @@
 import { preset } from "@tksst/eslint-config";
 
-export default preset.typeScript({ jest: true });
+export default preset.typeScript({ vitest: true });

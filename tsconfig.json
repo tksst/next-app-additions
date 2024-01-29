@@ -6,7 +6,8 @@
       // for fetch
       "DOM",
     ],
+    "types": ["vitest/globals"],
   },
   "extends": "@tksst/project-configs/tsconfig.json",
-  "include": ["src"],
+  "include": ["src", "./vitest.config.ts"],
 }

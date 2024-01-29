@@ -1,9 +1,11 @@
 import { readFile } from "node:fs/promises";
 
+import { expect, test, vitest } from "vitest";
+
 import getLatestNodeVersion from "./getLatestNodeVersion.js";
 
 test("latest v16", async () => {
-    jest.spyOn(globalThis, "fetch").mockImplementationOnce(
+    vitest.spyOn(globalThis, "fetch").mockImplementationOnce(
         () =>
             /* eslint-disable @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any */
             Promise.resolve({
@@ -19,7 +21,7 @@ test("latest v16", async () => {
 });
 
 test("error", async () => {
-    jest.spyOn(globalThis, "fetch").mockImplementationOnce(() =>
+    vitest.spyOn(globalThis, "fetch").mockImplementationOnce(() =>
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any
         Promise.resolve({ ok: false, status: 404 } as any),
     );

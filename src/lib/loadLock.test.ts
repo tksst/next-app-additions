@@ -1,3 +1,5 @@
+import { expect, test } from "vitest";
+
 import { loadLock } from "./loadLock.js";
 
 test("loadLock", async () => {
