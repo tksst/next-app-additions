@@ -1,5 +1,12 @@
 # @tksst/next-app-additions
 
+## 1.5.0
+
+### Minor Changes
+
+- c5e1b65: do not touch the `target` field of `tsconfig.json`` because create-next-app will no longer add the option to it.
+  see: [#60521 Remove unused target: es5 from tsconfig.json in create-next-app](https://github.com/vercel/next.js/pull/60521)
+
 ## 1.4.2
 
 ### Patch Changes
