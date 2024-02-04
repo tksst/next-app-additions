@@ -4,10 +4,10 @@
     "lib": [
       "ES2023",
       // for fetch
-      "DOM",
+      "DOM"
     ],
-    "types": ["vitest/globals"],
+    "types": ["vitest/globals"]
   },
   "extends": "@tksst/project-configs/tsconfig.json",
-  "include": ["src", "./vitest.config.ts"],
+  "include": ["src", "./vitest.config.ts"]
 }
