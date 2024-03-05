@@ -11,6 +11,7 @@ jobs:
   check-skippable:
     continue-on-error: true
     runs-on: ubuntu-22.04
+    timeout-minutes: 10
     outputs:
       skippable: ${{ steps.check.outputs.should_skip }}
     steps:
@@ -21,6 +22,7 @@ jobs:
     name: Test
     needs: check-skippable
     if: needs.check-skippable.outputs.skippable != 'true'
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
@@ -57,6 +59,7 @@ jobs:
     name: Build and Lint
     needs: check-skippable
     if: needs.check-skippable.outputs.skippable != 'true'
+    timeout-minutes: 10
 
     runs-on: ubuntu-22.04
     steps:
