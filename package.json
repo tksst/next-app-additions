@@ -3,7 +3,8 @@
   "version": "1.5.0",
   "description": "additions to a project generated with create-next-app",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "homepage": "https://github.com/tksst/next-app-additions",
   "repository": "github:tksst/next-app-additions",
