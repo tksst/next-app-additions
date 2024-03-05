@@ -33,6 +33,13 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@94c3c3d9567a0205de6da68a76c428ce4e769af1 # v2.0.0
+        continue-on-error: true
+        with:
+          # Set to true to publish the results as comment to the PR (applicable if workflow run is triggered by PR).
+          comment_on_pr: false
+
       - name: Checkout the source
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
@@ -63,6 +70,13 @@ jobs:
 
     runs-on: ubuntu-22.04
     steps:
+      - name: Collect Workflow Telemetry
+        uses: catchpoint/workflow-telemetry-action@94c3c3d9567a0205de6da68a76c428ce4e769af1 # v2.0.0
+        continue-on-error: true
+        with:
+          # Set to true to publish the results as comment to the PR (applicable if workflow run is triggered by PR).
+          comment_on_pr: false
+
       - name: Checkout the source
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
         with:
@@ -85,3 +99,18 @@ jobs:
 
       - run: pnpm build
       - run: pnpm lint
+
+  action-timeline:
+    needs:
+      - check-skippable
+      - test
+      - build-lint
+    # Runs even when the previous job was in error
+    if: ${{ always() }}
+    continue-on-error: true
+    runs-on: ubuntu-22.04
+    permissions:
+      actions: read
+    timeout-minutes: 10
+    steps:
+      - uses: Kesin11/actions-timeline@6905b677e042d41193107842cc5c7b715bef0042 # v2.0.3
