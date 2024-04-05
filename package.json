@@ -46,7 +46,7 @@
     "@types/node": "20.11.16",
     "@vitest/coverage-v8": "1.2.2",
     "better-typescript-lib": "2.6.0",
-    "eslint": "8.56.0",
+    "eslint": "9.0.0",
     "npm-run-all2": "6.1.2",
     "prettier": "3.2.5",
     "secretlint": "8.1.1",
