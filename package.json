@@ -47,7 +47,7 @@
     "@vitest/coverage-v8": "1.6.0",
     "better-typescript-lib": "2.8.0",
     "eslint": "9.7.0",
-    "npm-run-all2": "6.2.2",
+    "npm-run-all2": "7.0.1",
     "prettier": "3.3.3",
     "secretlint": "8.2.4",
     "tsup": "8.2.0",
