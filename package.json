@@ -44,7 +44,7 @@
     "@tksst/project-configs": "4.0.1",
     "@types/js-yaml": "4.0.9",
     "@types/node": "20.14.11",
-    "@vitest/coverage-v8": "1.6.0",
+    "@vitest/coverage-v8": "2.1.5",
     "better-typescript-lib": "2.8.0",
     "eslint": "9.7.0",
     "npm-run-all2": "7.0.1",
@@ -52,7 +52,7 @@
     "secretlint": "9.0.0",
     "tsup": "8.2.0",
     "typescript": "5.5.3",
-    "vitest": "1.6.0"
+    "vitest": "2.1.5"
   },
   "dependencies": {
     "js-yaml": "4.1.0",
