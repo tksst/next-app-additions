@@ -10,7 +10,7 @@ on:
 jobs:
   check-skippable:
     continue-on-error: true
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     outputs:
       skippable: ${{ steps.check.outputs.should_skip }}
@@ -68,7 +68,7 @@ jobs:
     if: needs.check-skippable.outputs.skippable != 'true'
     timeout-minutes: 10
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Collect Workflow Telemetry
         uses: catchpoint/workflow-telemetry-action@94c3c3d9567a0205de6da68a76c428ce4e769af1 # v2.0.0
@@ -108,7 +108,7 @@ jobs:
     # Runs even when the previous job was in error
     if: ${{ always() }}
     continue-on-error: true
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       actions: read
     timeout-minutes: 10
