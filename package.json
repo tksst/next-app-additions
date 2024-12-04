@@ -43,16 +43,16 @@
     "@tksst/prettier-config": "1.1.0",
     "@tksst/project-configs": "4.0.1",
     "@types/js-yaml": "4.0.9",
-    "@types/node": "20.17.6",
-    "@vitest/coverage-v8": "2.1.5",
-    "better-typescript-lib": "2.9.0",
-    "eslint": "9.15.0",
+    "@types/node": "20.17.9",
+    "@vitest/coverage-v8": "2.1.8",
+    "better-typescript-lib": "2.10.0",
+    "eslint": "9.16.0",
     "npm-run-all2": "7.0.1",
-    "prettier": "3.3.3",
+    "prettier": "3.4.2",
     "secretlint": "9.0.0",
     "tsup": "8.3.5",
-    "typescript": "5.6.3",
-    "vitest": "2.1.5"
+    "typescript": "5.7.2",
+    "vitest": "2.1.8"
   },
   "dependencies": {
     "js-yaml": "4.1.0",
