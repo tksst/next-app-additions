@@ -9,7 +9,7 @@ on:
 jobs:
   check-skippable:
     continue-on-error: true
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     # Minimum permissions required by skip-duplicate-actions
     permissions:
       actions: write
@@ -25,7 +25,7 @@ jobs:
     needs: check-skippable
     if: needs.check-skippable.outputs.skippable != 'true'
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
       - name: Checkout the source
