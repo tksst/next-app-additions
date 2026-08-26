@@ -52,7 +52,7 @@
     "secretlint": "9.0.0",
     "tsup": "8.3.6",
     "typescript": "5.7.3",
-    "vitest": "3.0.5"
+    "vitest": "3.2.6"
   },
   "dependencies": {
     "js-yaml": "4.1.0",
