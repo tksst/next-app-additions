@@ -37,7 +37,7 @@
     "test:unit": "vitest run --coverage"
   },
   "devDependencies": {
-    "@changesets/cli": "2.27.12",
+    "@changesets/cli": "3.0.1",
     "@secretlint/secretlint-rule-preset-recommend": "9.0.0",
     "@tksst/eslint-config": "14.0.0",
     "@tksst/prettier-config": "1.1.0",
